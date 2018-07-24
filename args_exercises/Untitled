@@ -1,0 +1,22 @@
+Array.prototype.myBsearch = function (target, func) {
+  if (this.length <= 1 && this[0] != target) {
+    return -1;
+  }
+
+  let mid = Math.floor(this.length / 2);
+
+  if (this[mid] === target) {
+    return mid;
+  }
+
+  let left = this.slice(0, mid);
+  let right = this.slice(mid + 1);
+
+  if (this[mid] < target) {
+    let index = right.myBsearch(target, func);
+    return (index < 0) ? index : index + mid + 1;
+  }
+  if (this[mid] > target) {
+    left.myBsearch(target, func);
+  }
+ };
